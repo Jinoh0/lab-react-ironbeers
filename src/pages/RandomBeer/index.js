@@ -5,7 +5,7 @@ import { HomeBtn } from "../../components/HomeBtn/index"
 
 export function RandomBeer () {
     const [ randomBeer , setRandomBeer ] = useState([]);
-
+console.log(randomBeer)
 
     useEffect(() => {
         async function fetchRandomBeer () {
@@ -22,10 +22,13 @@ export function RandomBeer () {
     
     fetchRandomBeer();
     }, []);
+
+
     return (
         <>
             <HomeBtn />
-            {randomBeer.map((currentRandom) => {
+           
+            {/* {randomBeer.map((currentRandom) => {
                 return (
                     <>
                     <div key ={currentRandom._id}>
@@ -39,7 +42,15 @@ export function RandomBeer () {
                     </div>
                     </>
                 )
-            })}
+            })} */}
+
+                    <img src={randomBeer.image_url} alt={randomBeer.name} />
+                    <h1>{randomBeer.name}</h1>
+                    <h2>{randomBeer.tagline}</h2>
+                    <h4>first brewed in {randomBeer.first_brewed}</h4>
+                    <p>{randomBeer.attenuation_level}</p>
+                    <p>{randomBeer.description}</p>
+                    <p>{randomBeer.contributed_by}</p>            
         </>
     )
 }

@@ -6,15 +6,15 @@ import axios from "axios";
 
 
 export function NewBeerForm () {
-    const [beer , setBeer] =useState([]);
+    // const [beer , setBeer] =useState([]);
     const [form , setForm]=useState({
         name:"",
         tagline:"",
         description:"",
         first_brewed:"",
         brewers_tips:"",
-        attenuation_level:"",
-        contributed_by:"",
+        attenuation_level:0,
+        contributed_by:""
     })
 
     function handleChange (e) {
@@ -22,23 +22,31 @@ export function NewBeerForm () {
     }
 
     
-    function handleSubmit (e) {
-        axios.post()        
+    async function handleSubmit (e) {
+        e.preventDefault()
+        try{
+            await axios.post('https://ih-beers-api2.herokuapp.com/beers/new' , form)
+        } catch (e) {
+            console.log (e);
+        }
+                
     }
 
-    useEffect(() =>{
-        async function postNewBeer () {
-            try {
-                const response = await axios.get(
-                    "https://ih-beers-api2.herokuapp.com/beers"
-                );
-                setBeer(response.data);
-            }catch (e){
-                console.log(e);
-            }
-        }
-        NewBeerForm();
-    },[]);
+    // useEffect(() =>{
+    //     async function postNewBeer () {
+    //         try {
+    //             const response = await axios.get(
+    //                 "https://ih-beers-api2.herokuapp.com/beers"
+    //             );
+    //             setBeer(response.data);
+    //         }catch (e){
+    //             console.log(e);
+    //         }
+    //     }
+    //     NewBeerForm();
+    // },[]);
+
+
         return (
         <>
             <HomeBtn />

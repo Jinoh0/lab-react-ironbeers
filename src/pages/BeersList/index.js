@@ -24,6 +24,8 @@ export function BeerList () {
         
         fetchBeers();
         } , []);
+
+        
         return (
         <>
             <HomeBtn />

@@ -10,7 +10,7 @@ import { useState , useEffect } from "react";
 
 export function BeerDetails () {
     const [allBeers , setAllBeers] = useState([])
-    const { beerid } =useParams() ;
+    const { beerid } = useParams() ;
 
     useEffect(()=> {            
         async function fetchBeers () {
